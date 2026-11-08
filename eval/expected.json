@@ -15,5 +15,6 @@
     "direct": true,
     "items": [{ "item": "lotion", "price": 6.99, "currency": "USD", "unit": "each" }],
     "forbidden_prices": [10.0]
-  }
+  },
+  { "file": "06.jpeg", "direct": false, "items": [] }
 ]

@@ -8,7 +8,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { extractPrices, type ExtractResult } from "../lib/vision/extract";
 
-const PASS_MARK = 4;
+const PASS_MARK = 5;
 const EVAL_DIR = "eval";
 const PHOTO_DIR = path.join(EVAL_DIR, "photos");
 
