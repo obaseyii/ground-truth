@@ -1,0 +1,19 @@
+[
+  { "file": "01.jpeg", "direct": true, "items": [{ "item": "card", "price": 30.0, "currency": "EUR", "unit": "each" }] },
+  { "file": "02.jpeg", "direct": true, "items": [{ "item": "plate", "price": 10.7, "currency": "USD", "unit": "each" }] },
+  {
+    "file": "03.jpeg",
+    "direct": true,
+    "items": [
+      { "item": "mozzarella fries", "price": 2.59, "currency": "USD", "unit": "each" },
+      { "item": "bacon double cheeseburger", "price": 4.99, "currency": "USD", "unit": "each" }
+    ]
+  },
+  { "file": "04.jpeg", "direct": false, "items": [] },
+  {
+    "file": "05.jpeg",
+    "direct": true,
+    "items": [{ "item": "lotion", "price": 6.99, "currency": "USD", "unit": "each" }],
+    "forbidden_prices": [10.0]
+  }
+]
