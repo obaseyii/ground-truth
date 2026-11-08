@@ -118,6 +118,6 @@ Other scripts:
 ## Team
 
 - **Emmanuel Kogbe:** backend, vision extraction, Solana payouts, and the capture app.
-- **Mohamed Benabdellah:** the project website, with the map, price explorer, rewards, and data pages.
+- **Mohamed Ben Abdellah:** the project website, with the map, price explorer, rewards, and data pages.
 
 Made for the MLH Solana Hackathon.
