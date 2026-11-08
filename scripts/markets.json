@@ -1,5 +1,6 @@
 [
-  { "id": "mkt_mile12", "name": "Mile 12 Market, Lagos", "lat": 6.6089, "lon": 3.3953, "radius_m": 200 },
-  { "id": "mkt_balogun", "name": "Balogun Market, Lagos", "lat": 6.4561, "lon": 3.3887, "radius_m": 250 },
-  { "id": "mkt_gikomba", "name": "Gikomba Market, Nairobi", "lat": -1.2846, "lon": 36.8361, "radius_m": 300 }
+  {"id": "mkt_mile12", "name": "Mile 12 Market, Lagos", "lat": 6.6089, "lon": 3.3953, "radius_m": 200},
+  {"id": "mkt_balogun", "name": "Balogun Market, Lagos", "lat": 6.4561, "lon": 3.3887, "radius_m": 250},
+  {"id": "mkt_gikomba", "name": "Gikomba Market, Nairobi", "lat": -1.2846, "lon": 36.8361, "radius_m": 300},
+  {"id": "mkt_newark_demo", "name": "Newark Demo Stores", "lat": 40.7357, "lon": -74.1724, "radius_m": 5000}
 ]

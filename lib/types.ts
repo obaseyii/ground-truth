@@ -154,3 +154,11 @@ export const SubmitResponse = z.object({
   explorerUrl: z.string().optional(),
 });
 export type SubmitResponse = z.infer<typeof SubmitResponse>;
+
+// GET /api/balance?wallet= (mock USDC on devnet)
+export const BalanceResponse = z.object({
+  wallet: z.string(),
+  usdc: z.number(),
+  baseUnits: z.string(),
+});
+export type BalanceResponse = z.infer<typeof BalanceResponse>;
