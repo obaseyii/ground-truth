@@ -117,6 +117,7 @@ Other scripts:
 
 ## Team
 
-Built by a four-person team: ML, backend, frontend, and lead.
+- **Emmanuel Kogbe:** backend, vision extraction, Solana payouts, and the capture app.
+- **Mohamed Benabdellah:** the project website, with the map, price explorer, rewards, and data pages.
 
 Made for the MLH Solana Hackathon.
