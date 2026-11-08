@@ -20,8 +20,24 @@ export function getDb(): DatabaseSync {
   const conn = new DatabaseSync(path, { enableForeignKeyConstraints: true, timeout: 5000 });
   conn.exec("PRAGMA journal_mode = WAL;");
   conn.exec(SCHEMA_SQL);
+  migrate(conn);
   db = conn;
   return db;
+}
+
+// Columns added after the first schema. CREATE TABLE IF NOT EXISTS does not add them to an
+// existing database, so add any that are missing.
+const ADDED_COLUMNS: { table: string; column: string; type: string }[] = [
+  { table: "observations", column: "image_width", type: "INTEGER" },
+  { table: "observations", column: "image_height", type: "INTEGER" },
+  { table: "observations", column: "image_bytes", type: "INTEGER" },
+];
+
+function migrate(conn: DatabaseSync) {
+  for (const { table, column, type } of ADDED_COLUMNS) {
+    const cols = conn.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
+    if (!cols.some((c) => c.name === column)) conn.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${type}`);
+  }
 }
 
 /** Runs fn inside BEGIN IMMEDIATE / COMMIT, rolling back on any error. */

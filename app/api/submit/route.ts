@@ -111,6 +111,9 @@ export async function POST(request: Request) {
     captured_at: capturedAt,
     nonce: nonce.trim(),
     image_hash: null,
+    image_width: null,
+    image_height: null,
+    image_bytes: image.size,
     confidence: null,
     status: "rejected",
     reason: null,
@@ -139,6 +142,9 @@ export async function POST(request: Request) {
     const meta = await sharp(buffer).metadata();
     mimeType = meta.format ? SHARP_FORMAT_TO_MIME[meta.format] : undefined;
     if (!mimeType || !meta.width || !meta.height) throw new Error(`unsupported format ${meta.format}`);
+    // Stored with the observation (also on rejections) so low confidence can be traced to frame size.
+    base.image_width = meta.width;
+    base.image_height = meta.height;
   } catch {
     return reject(REASONS.undecodable);
   }

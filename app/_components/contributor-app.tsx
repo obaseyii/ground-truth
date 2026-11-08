@@ -14,6 +14,17 @@ const MAX_SIDE_PX = 1600;
 const JPEG_QUALITY = 0.85;
 // Nonces live 120 s on the server. Fetch a fresh one before shooting if ours is older than this.
 const NONCE_REFRESH_MS = 100_000;
+const PAYOUT_USDC = 0.05;
+// After a payout, re-read the balance at these delays (ms) until devnet shows the new amount.
+const BALANCE_RECHECK_MS = [0, 2000, 5000];
+
+// Camera requests, tried in order. "ideal" values are preferences; a device that refuses a
+// request (OverconstrainedError, or a driver that rejects the size) falls through to the next.
+const CAMERA_REQUESTS: MediaStreamConstraints[] = [
+  { audio: false, video: { facingMode: { ideal: "environment" }, width: { ideal: 2560 }, height: { ideal: 1440 } } },
+  { audio: false, video: { facingMode: { ideal: "environment" } } },
+  { audio: false, video: true },
+];
 
 type CameraState = "off" | "starting" | "on" | "error";
 type Result = { kind: "response"; body: SubmitResponse } | { kind: "error"; message: string };
@@ -112,17 +123,47 @@ export default function ContributorApp() {
     };
   }, []);
 
-  const refreshBalance = useCallback(async (address: string) => {
-    try {
-      const res = await fetch(`/api/balance?wallet=${encodeURIComponent(address)}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(await errorMessage(res));
-      const body = (await res.json()) as BalanceResponse;
-      setBalance(body.usdc);
-      setBalanceError(false);
-    } catch {
-      setBalanceError(true);
-    }
+  const readBalance = useCallback(async (address: string): Promise<number> => {
+    const res = await fetch(`/api/balance?wallet=${encodeURIComponent(address)}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(await errorMessage(res));
+    return ((await res.json()) as BalanceResponse).usdc;
   }, []);
+
+  const refreshBalance = useCallback(
+    async (address: string) => {
+      try {
+        setBalance(await readBalance(address));
+        setBalanceError(false);
+      } catch {
+        setBalanceError(true);
+      }
+    },
+    [readBalance],
+  );
+
+  // After a verified result: show the paid amount at once, then re-read devnet until it agrees,
+  // in case the RPC node answering /api/balance lags behind the node that confirmed the payout.
+  const confirmPayoutBalance = useCallback(
+    async (address: string, before: number | null) => {
+      const expected = before === null ? null : before + PAYOUT_USDC;
+      if (expected !== null) setBalance(expected);
+      let last: number | null = null;
+      let waited = 0;
+      for (const at of BALANCE_RECHECK_MS) {
+        await new Promise((r) => setTimeout(r, at - waited));
+        waited = at;
+        try {
+          last = await readBalance(address);
+          setBalanceError(false);
+          if (expected === null || last >= expected - 1e-9) break;
+        } catch {
+          // keep the optimistic value and try again
+        }
+      }
+      if (last !== null) setBalance(last);
+    },
+    [readBalance],
+  );
 
   useEffect(() => {
     if (!wallet) return;
@@ -161,25 +202,27 @@ export default function ContributorApp() {
       setCameraError("This browser cannot open the camera. Use HTTPS or localhost, in Chrome or Safari.");
       return;
     }
-    let stream: MediaStream;
-    try {
-      // Rear camera preferred on phones; "ideal" falls back to any camera on laptops.
-      stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } },
-      });
-    } catch {
+    // Rear camera at 2560x1440 preferred; falls back to any size, then to any camera (laptops).
+    let stream: MediaStream | null = null;
+    let lastError: unknown = null;
+    for (const request of CAMERA_REQUESTS) {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+        stream = await navigator.mediaDevices.getUserMedia(request);
+        break;
       } catch (err) {
-        setCamera("error");
-        setCameraError(
-          err instanceof DOMException && err.name === "NotAllowedError"
-            ? "Camera permission was denied. Allow camera access in the browser settings and try again."
-            : "Could not open a camera on this device.",
-        );
-        return;
+        lastError = err;
+        // Permission denied applies to every request; stop asking.
+        if (err instanceof DOMException && err.name === "NotAllowedError") break;
       }
+    }
+    if (!stream) {
+      setCamera("error");
+      setCameraError(
+        lastError instanceof DOMException && lastError.name === "NotAllowedError"
+          ? "Camera permission was denied. Allow camera access in the browser settings and try again."
+          : "Could not open a camera on this device.",
+      );
+      return;
     }
     streamRef.current = stream;
     if (videoRef.current) {
@@ -232,7 +275,7 @@ export default function ContributorApp() {
       } else {
         const body = (await res.json()) as SubmitResponse;
         setResult({ kind: "response", body });
-        if (body.status === "verified") void refreshBalance(wallet);
+        if (body.status === "verified") void confirmPayoutBalance(wallet, balance);
       }
     } catch (err) {
       setResult({ kind: "error", message: err instanceof Error ? err.message : "Something went wrong, try again" });
@@ -487,6 +530,9 @@ function ResultCard({ result }: { result: Result }) {
           <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">In review, no payout yet</p>
           <p className="mt-1 text-lg text-amber-100">{r.reason}</p>
           {items}
+          <p className="mt-3 rounded-xl bg-amber-500/10 p-3 text-base font-medium text-amber-100">
+            Next time, hold the camera closer and fill the frame with the price label.
+          </p>
         </section>
       );
     case "payout_failed":
