@@ -79,6 +79,41 @@ export const StatsResponse = z.object({
 });
 export type StatsResponse = z.infer<typeof StatsResponse>;
 
+// GET /api/observations?item=&market= (public feed, CORS open)
+// One record per extracted price from a verified observation, newest first, at most 500.
+// Also written to public/data/observations.json by npm run export-observations.
+export const FeedObservation = z.object({
+  /** observation id, a dash, and the 0-based item index within the observation */
+  id: z.string(),
+  observation_id: z.string(),
+  /** contributor wallet (base58) */
+  contributor: z.string(),
+  item: z.string(),
+  price: z.number(),
+  currency: z.string(),
+  unit: z.string(),
+  /** market name, null if the observation has no market */
+  market: z.string().nullable(),
+  /** stored capture position, otherwise the market position */
+  lat: z.number().nullable(),
+  lon: z.number().nullable(),
+  captured_at: z.string(),
+  nonce: z.null(),
+  image_hash: z.string().nullable(),
+  confidence: z.number().nullable(),
+  status: z.literal("verified"),
+  reason: z.null(),
+  payout_tx: z.string().nullable(),
+  explorer_url: z.string().nullable(),
+});
+export type FeedObservation = z.infer<typeof FeedObservation>;
+export const ObservationsResponse = z.array(FeedObservation).max(500);
+export type ObservationsResponse = z.infer<typeof ObservationsResponse>;
+
+// public/data/stats.json (npm run export-observations)
+export const FeedStats = StatsResponse.extend({ updatedAt: z.string() });
+export type FeedStats = z.infer<typeof FeedStats>;
+
 // GET /api/activity
 export const ActivityEntry = z.object({
   observationId: z.string(),

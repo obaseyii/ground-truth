@@ -50,4 +50,4 @@ agent.json
 keypair*.json
 
 # local SQLite database
-data/
+/data/

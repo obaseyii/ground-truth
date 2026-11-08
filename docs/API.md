@@ -114,6 +114,74 @@ Totals for the dashboard header. `blocked` counts rejected submissions.
 { "verified": 10, "usdcPaid": 0.5, "blocked": 1 }
 ```
 
+## GET /api/observations
+
+Public data feed for the website. One record per extracted price from **verified** observations, newest first, at most 500. Always reads the database (ignores `USE_FIXTURES`). CORS is open (see below).
+
+**Parameters**
+
+| Name | In | Required | Notes |
+| --- | --- | --- | --- |
+| `item` | query | no | Canonical item name, case-insensitive, for example `tomato` |
+| `market` | query | no | Market id or market name, case-insensitive, for example `mkt_mile12` |
+
+**Record fields**
+
+| Field | Notes |
+| --- | --- |
+| `id` | Observation id, a dash, and the 0-based item index within the photo, for example `obs_a1k9x2pq-0` |
+| `observation_id` | The photo's observation id |
+| `contributor` | Contributor wallet (base58) |
+| `item`, `price`, `currency`, `unit` | The extracted price |
+| `market` | Market name, `null` if none |
+| `lat`, `lon` | Stored capture position, otherwise the market position |
+| `captured_at` | ISO 8601 UTC |
+| `nonce` | Always `null` (not published) |
+| `image_hash` | Perceptual hash (dHash hex) |
+| `confidence` | Vision model confidence, 0 to 1 |
+| `status` | Always `verified` |
+| `reason` | Always `null` |
+| `payout_tx` | Devnet payout signature, or `null` |
+| `explorer_url` | Solana Explorer devnet link, or `null` |
+
+```json
+[
+  {
+    "id": "obs_a1k9x2pq-0",
+    "observation_id": "obs_a1k9x2pq",
+    "contributor": "FbmQiaqB2cFx91eY7aeHSgv3HJWqGZ5xGY4pJR4LNZXb",
+    "item": "tomato",
+    "price": 1200,
+    "currency": "NGN",
+    "unit": "kg",
+    "market": "Mile 12 Market, Lagos",
+    "lat": 6.6089,
+    "lon": 3.3953,
+    "captured_at": "2026-11-08T09:12:00.000Z",
+    "nonce": null,
+    "image_hash": "f0e1d2c3b4a59687",
+    "confidence": 0.92,
+    "status": "verified",
+    "reason": null,
+    "payout_tx": "3vQ...",
+    "explorer_url": "https://explorer.solana.com/tx/3vQ...?cluster=devnet"
+  }
+]
+```
+
+### Static export
+
+`npm run export-observations` reads the database and writes:
+
+- `public/data/observations.json`: the same array as `GET /api/observations` with no filters
+- `public/data/stats.json`: `{ "verified", "usdcPaid", "blocked", "updatedAt" }`. `verified` counts verified photos, `usdcPaid` is 0.05 per landed payout, `blocked` counts rejected photos, `updatedAt` is the export time (ISO UTC)
+
+The site can load these from `/data/observations.json` and `/data/stats.json` without hitting the database. Rerun the script and commit to refresh them.
+
+### CORS
+
+`GET /api/observations`, `GET /api/markets` and `GET /api/stats` send `Access-Control-Allow-Origin: *` and `Access-Control-Allow-Methods: GET, OPTIONS`, and answer `OPTIONS` preflight with 204. `nonce`, `submit` and `balance` have no CORS headers.
+
 ## GET /api/activity
 
 The 20 most recent submissions or fewer, newest first. `reason` is `null` for verified entries. `items` is empty for rejected entries.
