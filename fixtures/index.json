@@ -1,0 +1,293 @@
+{
+  "tomato": {
+    "item": "tomato",
+    "markets": [
+      {
+        "marketId": "mkt_mile12",
+        "name": "Mile 12 Market, Lagos",
+        "lat": 6.6089,
+        "lon": 3.3953,
+        "median": 1150,
+        "count": 2,
+        "currency": "NGN",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T14:35:00.000Z",
+        "latest": [
+          {
+            "price": 1100,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T14:35:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "23sXMBdeBFAR9VL1Z7TAT5x4gP2g9Rj8ppVHnRoDv3HnuiS1y8Xt2ZHVZ3MB8E7hPrBptbHbs9451SAc3pUhgUjZ",
+            "explorerUrl": "https://explorer.solana.com/tx/23sXMBdeBFAR9VL1Z7TAT5x4gP2g9Rj8ppVHnRoDv3HnuiS1y8Xt2ZHVZ3MB8E7hPrBptbHbs9451SAc3pUhgUjZ?cluster=devnet"
+          },
+          {
+            "price": 1200,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T14:00:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD",
+            "explorerUrl": "https://explorer.solana.com/tx/2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_balogun",
+        "name": "Balogun Market, Lagos",
+        "lat": 6.4561,
+        "lon": 3.3887,
+        "median": 1300,
+        "count": 1,
+        "currency": "NGN",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T15:10:00.000Z",
+        "latest": [
+          {
+            "price": 1300,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T15:10:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "GVfBCiJRG3kaiaZfEaYmtytyNzoij2JmiLdhBATAPNPwXkG1iwNyWuukJ5fhvMQcixresf9Ew89SFfLohrZ6tqc",
+            "explorerUrl": "https://explorer.solana.com/tx/GVfBCiJRG3kaiaZfEaYmtytyNzoij2JmiLdhBATAPNPwXkG1iwNyWuukJ5fhvMQcixresf9Ew89SFfLohrZ6tqc?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_gikomba",
+        "name": "Gikomba Market, Nairobi",
+        "lat": -1.2846,
+        "lon": 36.8361,
+        "median": 125,
+        "count": 2,
+        "currency": "KES",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T20:30:00.000Z",
+        "latest": [
+          {
+            "price": 130,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T20:30:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "4EBZDnN1GfWLnvuofA6MwSth8EyvtPwyRspSDM8yZMNAqt9TtUGpQCobxZn6F4FsApuorgDYMkhPzBn9phe9MH6m",
+            "explorerUrl": "https://explorer.solana.com/tx/4EBZDnN1GfWLnvuofA6MwSth8EyvtPwyRspSDM8yZMNAqt9TtUGpQCobxZn6F4FsApuorgDYMkhPzBn9phe9MH6m?cluster=devnet"
+          },
+          {
+            "price": 120,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T16:30:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "4hpsqcmZgRz66LuXbxBDH5puTorx4JyQH7HkBLewWY9rLfudbKvRJ1rcEnQ98qk2SvGYkbY37sWvWxGs2oeVhkY9",
+            "explorerUrl": "https://explorer.solana.com/tx/4hpsqcmZgRz66LuXbxBDH5puTorx4JyQH7HkBLewWY9rLfudbKvRJ1rcEnQ98qk2SvGYkbY37sWvWxGs2oeVhkY9?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_makola",
+        "name": "Makola Market, Accra",
+        "lat": 5.5493,
+        "lon": -0.2077,
+        "median": 15,
+        "count": 1,
+        "currency": "GHS",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T18:20:00.000Z",
+        "latest": [
+          {
+            "price": 15,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T18:20:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY",
+            "explorerUrl": "https://explorer.solana.com/tx/JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY?cluster=devnet"
+          }
+        ]
+      }
+    ]
+  },
+  "rice": {
+    "item": "rice",
+    "markets": [
+      {
+        "marketId": "mkt_mile12",
+        "name": "Mile 12 Market, Lagos",
+        "lat": 6.6089,
+        "lon": 3.3953,
+        "median": 1775,
+        "count": 2,
+        "currency": "NGN",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T19:45:00.000Z",
+        "latest": [
+          {
+            "price": 1750,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T19:45:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "5vtUTRz4w6pYmWph1BEDfBsT991h2ctMz9RNCyzvWWKxrQix85RYWjEedaYpmdGH3tZDMhAEreUupKep5trqGYkW",
+            "explorerUrl": "https://explorer.solana.com/tx/5vtUTRz4w6pYmWph1BEDfBsT991h2ctMz9RNCyzvWWKxrQix85RYWjEedaYpmdGH3tZDMhAEreUupKep5trqGYkW?cluster=devnet"
+          },
+          {
+            "price": 1800,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T14:00:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD",
+            "explorerUrl": "https://explorer.solana.com/tx/2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_balogun",
+        "name": "Balogun Market, Lagos",
+        "lat": 6.4561,
+        "lon": 3.3887,
+        "median": 1900,
+        "count": 1,
+        "currency": "NGN",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T15:50:00.000Z",
+        "latest": [
+          {
+            "price": 1900,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T15:50:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "55it39U9rownDhraHXJ5QL7EDsDVv9zY7J7nZsKBwTthReHdfogADtmXWqfJuwHW4NXBVPg3QKD3yEPvearmA66G",
+            "explorerUrl": "https://explorer.solana.com/tx/55it39U9rownDhraHXJ5QL7EDsDVv9zY7J7nZsKBwTthReHdfogADtmXWqfJuwHW4NXBVPg3QKD3yEPvearmA66G?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_gikomba",
+        "name": "Gikomba Market, Nairobi",
+        "lat": -1.2846,
+        "lon": 36.8361,
+        "median": 190,
+        "count": 1,
+        "currency": "KES",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T16:30:00.000Z",
+        "latest": [
+          {
+            "price": 190,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T16:30:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "4hpsqcmZgRz66LuXbxBDH5puTorx4JyQH7HkBLewWY9rLfudbKvRJ1rcEnQ98qk2SvGYkbY37sWvWxGs2oeVhkY9",
+            "explorerUrl": "https://explorer.solana.com/tx/4hpsqcmZgRz66LuXbxBDH5puTorx4JyQH7HkBLewWY9rLfudbKvRJ1rcEnQ98qk2SvGYkbY37sWvWxGs2oeVhkY9?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_makola",
+        "name": "Makola Market, Accra",
+        "lat": 5.5493,
+        "lon": -0.2077,
+        "median": 22,
+        "count": 1,
+        "currency": "GHS",
+        "unit": "kg",
+        "updatedAt": "2026-11-07T18:20:00.000Z",
+        "latest": [
+          {
+            "price": 22,
+            "unit": "kg",
+            "capturedAt": "2026-11-07T18:20:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY",
+            "explorerUrl": "https://explorer.solana.com/tx/JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY?cluster=devnet"
+          }
+        ]
+      }
+    ]
+  },
+  "palm oil": {
+    "item": "palm oil",
+    "markets": [
+      {
+        "marketId": "mkt_mile12",
+        "name": "Mile 12 Market, Lagos",
+        "lat": 6.6089,
+        "lon": 3.3953,
+        "median": 2400,
+        "count": 1,
+        "currency": "NGN",
+        "unit": "l",
+        "updatedAt": "2026-11-07T19:45:00.000Z",
+        "latest": [
+          {
+            "price": 2400,
+            "unit": "l",
+            "capturedAt": "2026-11-07T19:45:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "5vtUTRz4w6pYmWph1BEDfBsT991h2ctMz9RNCyzvWWKxrQix85RYWjEedaYpmdGH3tZDMhAEreUupKep5trqGYkW",
+            "explorerUrl": "https://explorer.solana.com/tx/5vtUTRz4w6pYmWph1BEDfBsT991h2ctMz9RNCyzvWWKxrQix85RYWjEedaYpmdGH3tZDMhAEreUupKep5trqGYkW?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_balogun",
+        "name": "Balogun Market, Lagos",
+        "lat": 6.4561,
+        "lon": 3.3887,
+        "median": 2500,
+        "count": 1,
+        "currency": "NGN",
+        "unit": "l",
+        "updatedAt": "2026-11-07T15:10:00.000Z",
+        "latest": [
+          {
+            "price": 2500,
+            "unit": "l",
+            "capturedAt": "2026-11-07T15:10:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "GVfBCiJRG3kaiaZfEaYmtytyNzoij2JmiLdhBATAPNPwXkG1iwNyWuukJ5fhvMQcixresf9Ew89SFfLohrZ6tqc",
+            "explorerUrl": "https://explorer.solana.com/tx/GVfBCiJRG3kaiaZfEaYmtytyNzoij2JmiLdhBATAPNPwXkG1iwNyWuukJ5fhvMQcixresf9Ew89SFfLohrZ6tqc?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_gikomba",
+        "name": "Gikomba Market, Nairobi",
+        "lat": -1.2846,
+        "lon": 36.8361,
+        "median": 350,
+        "count": 1,
+        "currency": "KES",
+        "unit": "l",
+        "updatedAt": "2026-11-07T17:20:00.000Z",
+        "latest": [
+          {
+            "price": 350,
+            "unit": "l",
+            "capturedAt": "2026-11-07T17:20:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "55NwtjKFXTDTBR5JcJtp6thJN5796ToEWDBZ6iryntogsdXYoviPK8a7MdmmC49tVffnJEDBuqFZBqVL23kcUe3D",
+            "explorerUrl": "https://explorer.solana.com/tx/55NwtjKFXTDTBR5JcJtp6thJN5796ToEWDBZ6iryntogsdXYoviPK8a7MdmmC49tVffnJEDBuqFZBqVL23kcUe3D?cluster=devnet"
+          }
+        ]
+      },
+      {
+        "marketId": "mkt_makola",
+        "name": "Makola Market, Accra",
+        "lat": 5.5493,
+        "lon": -0.2077,
+        "median": 40,
+        "count": 1,
+        "currency": "GHS",
+        "unit": "l",
+        "updatedAt": "2026-11-07T19:00:00.000Z",
+        "latest": [
+          {
+            "price": 40,
+            "unit": "l",
+            "capturedAt": "2026-11-07T19:00:00.000Z",
+            "photoUrl": "/fixtures/photo.svg",
+            "payoutTx": "5qWEHMFgFsfUDSpDp3mpcFWEwbRMXjH8agWPhrRQ1ZY8jnshY2wEFFRSm1RTU33pfq4Y2JjoGuDeRCVnxhxajwcM",
+            "explorerUrl": "https://explorer.solana.com/tx/5qWEHMFgFsfUDSpDp3mpcFWEwbRMXjH8agWPhrRQ1ZY8jnshY2wEFFRSm1RTU33pfq4Y2JjoGuDeRCVnxhxajwcM?cluster=devnet"
+          }
+        ]
+      }
+    ]
+  }
+}

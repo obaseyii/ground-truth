@@ -1,0 +1,44 @@
+{
+  "verified": {
+    "status": "verified",
+    "observationId": "obs_a1k9x2pq",
+    "items": [
+      {
+        "item": "tomato",
+        "raw_label": "TOMATOES (1kg)",
+        "price": 1200,
+        "currency": "NGN",
+        "unit": "kg"
+      },
+      {
+        "item": "rice",
+        "raw_label": "Rice /kg",
+        "price": 1800,
+        "currency": "NGN",
+        "unit": "kg"
+      }
+    ],
+    "payoutTx": "2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD",
+    "explorerUrl": "https://explorer.solana.com/tx/2Wu7bkR2cM44Q4N13KyzfnV4GAH5XEanzMkyqp3oFwW63fiFM4VMqPVVjRumdmja93bufAbJVMF9cio9KV1PATCD?cluster=devnet"
+  },
+  "review": {
+    "status": "review",
+    "reason": "Hard to read, waiting for review. No payout yet",
+    "observationId": "obs_l7c2f5qi",
+    "items": [
+      {
+        "item": "tomato",
+        "raw_label": "Tomato kg",
+        "price": 18,
+        "currency": "GHS",
+        "unit": "kg"
+      }
+    ]
+  },
+  "rejected": {
+    "status": "rejected",
+    "reason": "This looks like a photo of a screen, not a price board",
+    "observationId": "obs_k4v9b6tu",
+    "items": []
+  }
+}

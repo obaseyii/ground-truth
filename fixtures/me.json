@@ -1,0 +1,97 @@
+{
+  "wallet": "FbmQiaqB2cFx91eY7aeHSgv3HJWqGZ5xGY4pJR4LNZXb",
+  "totalUsdc": 0.2,
+  "submissions": [
+    {
+      "observationId": "obs_l7c2f5qi",
+      "status": "review",
+      "reason": "Hard to read, waiting for review. No payout yet",
+      "items": [
+        {
+          "item": "tomato",
+          "price": 18,
+          "currency": "GHS",
+          "unit": "kg"
+        }
+      ],
+      "payoutTx": null,
+      "explorerUrl": null,
+      "photoUrl": "/fixtures/photo.svg",
+      "createdAt": "2026-11-07T21:35:00.000Z"
+    },
+    {
+      "observationId": "obs_h8w5z3ne",
+      "status": "verified",
+      "reason": null,
+      "items": [
+        {
+          "item": "palm oil",
+          "price": 40,
+          "currency": "GHS",
+          "unit": "l"
+        }
+      ],
+      "payoutTx": "5qWEHMFgFsfUDSpDp3mpcFWEwbRMXjH8agWPhrRQ1ZY8jnshY2wEFFRSm1RTU33pfq4Y2JjoGuDeRCVnxhxajwcM",
+      "explorerUrl": "https://explorer.solana.com/tx/5qWEHMFgFsfUDSpDp3mpcFWEwbRMXjH8agWPhrRQ1ZY8jnshY2wEFFRSm1RTU33pfq4Y2JjoGuDeRCVnxhxajwcM?cluster=devnet",
+      "photoUrl": "/fixtures/photo.svg",
+      "createdAt": "2026-11-07T19:00:00.000Z"
+    },
+    {
+      "observationId": "obs_g2p4k9ma",
+      "status": "verified",
+      "reason": null,
+      "items": [
+        {
+          "item": "tomato",
+          "price": 15,
+          "currency": "GHS",
+          "unit": "kg"
+        },
+        {
+          "item": "rice",
+          "price": 22,
+          "currency": "GHS",
+          "unit": "kg"
+        }
+      ],
+      "payoutTx": "JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY",
+      "explorerUrl": "https://explorer.solana.com/tx/JaC2LDRrs2PCG9oBNh5BD99mTyKhNStUzZBrtJq55sgP6MCtH6DCrPi6i5sKFYHbKitgm7Lgzdfv353YpphCjBY?cluster=devnet",
+      "photoUrl": "/fixtures/photo.svg",
+      "createdAt": "2026-11-07T18:20:00.000Z"
+    },
+    {
+      "observationId": "obs_d9q2e5vy",
+      "status": "verified",
+      "reason": null,
+      "items": [
+        {
+          "item": "rice",
+          "price": 1900,
+          "currency": "NGN",
+          "unit": "kg"
+        }
+      ],
+      "payoutTx": "55it39U9rownDhraHXJ5QL7EDsDVv9zY7J7nZsKBwTthReHdfogADtmXWqfJuwHW4NXBVPg3QKD3yEPvearmA66G",
+      "explorerUrl": "https://explorer.solana.com/tx/55it39U9rownDhraHXJ5QL7EDsDVv9zY7J7nZsKBwTthReHdfogADtmXWqfJuwHW4NXBVPg3QKD3yEPvearmA66G?cluster=devnet",
+      "photoUrl": "/fixtures/photo.svg",
+      "createdAt": "2026-11-07T15:50:00.000Z"
+    },
+    {
+      "observationId": "obs_b7m3r8tz",
+      "status": "verified",
+      "reason": null,
+      "items": [
+        {
+          "item": "tomato",
+          "price": 1100,
+          "currency": "NGN",
+          "unit": "kg"
+        }
+      ],
+      "payoutTx": "23sXMBdeBFAR9VL1Z7TAT5x4gP2g9Rj8ppVHnRoDv3HnuiS1y8Xt2ZHVZ3MB8E7hPrBptbHbs9451SAc3pUhgUjZ",
+      "explorerUrl": "https://explorer.solana.com/tx/23sXMBdeBFAR9VL1Z7TAT5x4gP2g9Rj8ppVHnRoDv3HnuiS1y8Xt2ZHVZ3MB8E7hPrBptbHbs9451SAc3pUhgUjZ?cluster=devnet",
+      "photoUrl": "/fixtures/photo.svg",
+      "createdAt": "2026-11-07T14:35:00.000Z"
+    }
+  ]
+}
