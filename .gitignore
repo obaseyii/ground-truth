@@ -48,3 +48,6 @@ gt-keys
 treasury.json
 agent.json
 keypair*.json
+
+# local SQLite database
+data/

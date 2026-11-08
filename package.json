@@ -12,7 +12,8 @@
     "mint": "tsx scripts/mint-usdc.ts",
     "payout-test": "tsx scripts/payout-test.ts",
     "seed-markets": "tsx scripts/seed-markets.ts",
-    "check-env": "tsx scripts/check-env.ts"
+    "check-env": "tsx scripts/check-env.ts",
+    "submit-test": "tsx scripts/submit-test.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",

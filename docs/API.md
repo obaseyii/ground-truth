@@ -180,21 +180,49 @@ A missing or invalid wallet returns 400. In fixture mode, any valid wallet gets 
 
 ## POST /api/nonce
 
-Defined in BUILD_PLAN.md T5. Not built yet.
+Starts a capture session. Request a new nonce when the camera opens and after every submit.
 
 **Body (JSON):** `{ "wallet": "<base58 address>" }`
 
+Returns a random 16-byte hex nonce tied to that wallet. It works once, within 120 seconds. An invalid wallet returns 400.
+
 ```json
-{ "nonce": "9f1c2e...16 bytes hex", "expiresInSeconds": 120 }
+{ "nonce": "9f1c2e7a0b4d4e1f8c3a5b6d7e8f9012", "expiresInSeconds": 120 }
 ```
 
 ## POST /api/submit
 
-Defined in BUILD_PLAN.md T5. Not built yet.
+Submits one photo. Slow: the vision call plus a devnet payout can take 10 to 30 seconds.
 
-**Body (multipart/form-data):** `image` (JPEG), `nonce`, `wallet`, `lat`, `lon`, `accuracy`.
+**Body (multipart/form-data)**
 
-`reason` is present when the status is `rejected` or `review`. `payoutTx` and `explorerUrl` are present only when the status is `verified`.
+| Field | Required | Notes |
+| --- | --- | --- |
+| `image` | yes | File. JPEG preferred (PNG, WebP, HEIF also decode). Under 3 MB. |
+| `nonce` | yes | From `POST /api/nonce` for the same wallet |
+| `wallet` | yes | Base58 Solana address that receives the payout |
+| `marketId` | yes | An `id` from `GET /api/markets` |
+| `lat`, `lon`, `accuracy` | no | Numbers. Stored, not checked yet (geofence comes in T8) |
+
+A missing or malformed field, or an unknown `marketId`, returns 400 with `{ "error": "..." }`. Every check failure returns 200 with `status: "rejected"` and a plain `reason`.
+
+**Pipeline, in order**
+
+1. Nonce exists, belongs to the wallet, is unused and under 120 seconds old. It is marked used in the same step, so a nonce works once even if a later step fails.
+2. Image is under 3 MB and decodes.
+3. Duplicate check: dHash with Hamming distance 6 or less against any submission in the last 7 days.
+4. Vision extraction. A photo of a screen or print is rejected with the model's reason before any items are used. No items: rejected with "No readable prices found". Confidence under 0.7: `review`, no payout.
+5. The observation and its prices are saved. Rejections are saved too (for stats), without prices.
+6. Verified photos are paid 0.05 USDC on devnet. Each observation is paid at most once. If the payment fails, the status is `payout_failed` and the record is kept.
+
+**Response**
+
+| Status | `reason` | `items` | `payoutTx`, `explorerUrl` |
+| --- | --- | --- | --- |
+| `verified` | absent | extracted prices | present |
+| `review` | present | extracted prices | absent |
+| `payout_failed` | present | extracted prices | absent |
+| `rejected` | present | `[]` | absent |
 
 ```json
 {
@@ -209,5 +237,18 @@ Defined in BUILD_PLAN.md T5. Not built yet.
 ```
 
 ```json
-{ "status": "rejected", "reason": "This looks like a photo of a screen, not a price board", "observationId": "obs_k4v9b6tu", "items": [] }
+{ "status": "rejected", "reason": "This photo was already submitted", "observationId": "obs_k4v9b6tu", "items": [] }
 ```
+
+Rejection reasons the app may show:
+
+- This capture session is not valid. Reopen the camera and try again
+- This capture session belongs to a different wallet
+- This capture session was already used. Take a new photo
+- This capture session expired. Take the photo again
+- Photo is larger than 3 MB
+- Could not open the photo. Take it again
+- This photo was already submitted
+- Could not read the photo right now. Please try again
+- No readable prices found
+- The vision model's spoof reason, for example "This looks like a photo of a screen"

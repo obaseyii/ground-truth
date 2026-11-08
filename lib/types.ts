@@ -124,10 +124,27 @@ export const NonceResponse = z.object({
 export type NonceResponse = z.infer<typeof NonceResponse>;
 
 // POST /api/submit (BUILD_PLAN.md T5)
-// Request is multipart/form-data: image (jpeg), nonce, wallet, lat, lon, accuracy.
+// Request is multipart/form-data. Required: image (JPEG, PNG, WebP, HEIF, under 3 MB), nonce,
+// wallet, marketId. Optional: lat, lon, accuracy (numbers; stored, not checked yet).
+export const SubmitFields = z.object({
+  nonce: z.string(),
+  wallet: z.string(),
+  marketId: z.string(),
+  lat: z.number().optional(),
+  lon: z.number().optional(),
+  accuracy: z.number().optional(),
+});
+export type SubmitFields = z.infer<typeof SubmitFields>;
+
 export const SubmitItem = PriceItem.extend({ raw_label: z.string() });
 export type SubmitItem = z.infer<typeof SubmitItem>;
 
+/**
+ * verified: prices saved and 0.05 USDC paid (payoutTx and explorerUrl set).
+ * review: confidence under 0.7, prices saved, no payout. reason set.
+ * rejected: a check failed. reason set, items empty.
+ * payout_failed: prices saved but the payout transaction failed. reason set.
+ */
 export const SubmitResponse = z.object({
   status: ObservationStatus,
   reason: z.string().optional(),
